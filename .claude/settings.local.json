@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__sequential-thinking__sequentialthinking",
+      "mcp__github__create_issue",
+      "mcp__github__create_or_update_file",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
