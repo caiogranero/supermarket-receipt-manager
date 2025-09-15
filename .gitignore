@@ -54,3 +54,4 @@ coverage/
 # Build artifacts
 dist/
 build/
+/generated/prisma

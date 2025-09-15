@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server'
+import { testDatabaseConnection } from '@/lib/prisma'
 
 export async function GET() {
   try {
+    // Test database connection
+    const isDatabaseConnected = await testDatabaseConnection()
+
     const healthCheck = {
       status: 'OK',
       timestamp: new Date().toISOString(),
@@ -13,7 +17,13 @@ export async function GET() {
         endpoints: [
           '/api/health',
           '/api/auth (placeholder)',
+          '/api/db/test',
         ],
+      },
+      database: {
+        connected: isDatabaseConnected,
+        provider: 'postgresql',
+        orm: 'prisma',
       },
     }
 

@@ -12,10 +12,11 @@ Personal inventory tracking system for São Paulo supermarket receipts via NFCe 
 
 ## 🏗️ Architecture
 
-- **Backend**: C# ASP.NET Core API
-- **Frontend**: React PWA (mobile-optimized)  
-- **Database**: PostgreSQL
-- **Hosting**: Render.com (free tier)
+- **Backend**: Next.js 14 API Routes (App Router)
+- **Frontend**: React PWA (mobile-optimized)
+- **Database**: PostgreSQL with Docker (dev) / Vercel (prod)
+- **ORM**: Prisma with TypeScript
+- **Hosting**: Vercel (planned)
 
 ## 📋 Current Status
 
@@ -46,9 +47,10 @@ This project is in active development. See [Issues](https://github.com/caiograne
 ## 🛠️ Technical Stack
 
 ### Backend
-- **Framework**: ASP.NET Core 8.0+
-- **Database**: PostgreSQL with Entity Framework Core
-- **Authentication**: JWT-based authentication
+- **Framework**: Next.js 14+ API Routes with App Router
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js (planned)
+- **Development**: Docker PostgreSQL container
 - **Architecture**: Clean Architecture principles
 
 ### Frontend
