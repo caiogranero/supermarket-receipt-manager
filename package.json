@@ -24,6 +24,8 @@
     "@auth/prisma-adapter": "^2.10.0",
     "@prisma/client": "^6.16.2",
     "@types/bcryptjs": "^2.4.6",
+    "@zxing/browser": "^0.1.5",
+    "@zxing/library": "^0.21.3",
     "bcryptjs": "^3.0.2",
     "next": "^14.2.0",
     "next-auth": "^4.24.11",
