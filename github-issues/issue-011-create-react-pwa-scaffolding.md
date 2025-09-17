@@ -1,6 +1,6 @@
 # Issue #11: Integrate Frontend with Next.js PWA
 
-**Status:** OPEN
+**Status:** DONE
 **Created:** 2025-09-14T17:26:39Z
 **Updated:** 2025-09-14T17:26:39Z
 **Author:** caiogranero

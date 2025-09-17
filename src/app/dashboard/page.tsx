@@ -1,123 +1,156 @@
 'use client'
 
-import { useSession, signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import AppLayout from '@/components/Layout/AppLayout'
+import Link from 'next/link'
 
 export default function DashboardPage() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
+  return (
+    <AppLayout
+      title="Dashboard"
+      subtitle="Overview of your receipt scanning and inventory management"
+      headerAction={
+        <Link
+          href="/scan"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+        >
+          Scan Receipt
+        </Link>
+      }
+    >
+      <div className="space-y-6">
+        {/* Stats Overview */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-blue-600 text-xl">🧾</span>
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Total Receipts</p>
+                <p className="text-2xl font-bold text-gray-900">0</p>
+              </div>
+            </div>
+            <p className="mt-2 text-sm text-gray-500">No receipts scanned yet</p>
+          </div>
 
-  useEffect(() => {
-    if (status === 'loading') return // Still loading
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <span className="text-green-600 text-xl">💰</span>
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Total Spent</p>
+                <p className="text-2xl font-bold text-gray-900">R$ 0.00</p>
+              </div>
+            </div>
+            <p className="mt-2 text-sm text-gray-500">This month</p>
+          </div>
 
-    if (!session) {
-      router.push('/auth/signin')
-      return
-    }
-  }, [session, status, router])
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="flex items-center">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                <span className="text-purple-600 text-xl">📝</span>
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Shopping Lists</p>
+                <p className="text-2xl font-bold text-gray-900">0</p>
+              </div>
+            </div>
+            <p className="mt-2 text-sm text-gray-500">Active lists</p>
+          </div>
+        </div>
 
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-          <p className="mt-4 text-gray-600">Loading...</p>
+        {/* Quick Actions */}
+        <div className="bg-white rounded-lg shadow-sm p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Link
+              href="/scan"
+              className="flex items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors group"
+            >
+              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white text-lg">📷</span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Scan Receipt</p>
+                <p className="text-sm text-gray-600">Use camera to scan</p>
+              </div>
+            </Link>
+
+            <Link
+              href="/history"
+              className="flex items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors group"
+            >
+              <div className="w-10 h-10 bg-gray-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white text-lg">📋</span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">View History</p>
+                <p className="text-sm text-gray-600">Browse receipts</p>
+              </div>
+            </Link>
+
+            <Link
+              href="/shopping-list"
+              className="flex items-center p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors group"
+            >
+              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white text-lg">🛒</span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Shopping List</p>
+                <p className="text-sm text-gray-600">AI suggestions</p>
+              </div>
+            </Link>
+
+            <div className="flex items-center p-4 bg-yellow-50 rounded-lg opacity-75">
+              <div className="w-10 h-10 bg-yellow-600 rounded-lg flex items-center justify-center mr-3">
+                <span className="text-white text-lg">📊</span>
+              </div>
+              <div>
+                <p className="font-medium text-gray-900">Analytics</p>
+                <p className="text-sm text-gray-600">Coming soon</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Getting Started */}
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+          <div className="flex items-start">
+            <div className="flex-shrink-0">
+              <span className="text-3xl">🚀</span>
+            </div>
+            <div className="ml-4">
+              <h3 className="text-lg font-medium text-gray-900 mb-2">Get Started</h3>
+              <p className="text-gray-700 mb-4">
+                Welcome to your SuperMarket Receipt Manager! Start by scanning your first NFCe receipt
+                to build your personal inventory tracking system.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/scan"
+                  className="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <span className="mr-2">📷</span>
+                  Scan Your First Receipt
+                </Link>
+                <a
+                  href="#"
+                  className="inline-flex items-center px-4 py-2 bg-white text-gray-700 text-sm font-medium rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    alert('Documentation will be available soon!')
+                  }}
+                >
+                  <span className="mr-2">📖</span>
+                  View Documentation
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    )
-  }
-
-  if (!session) {
-    return null // Redirecting
-  }
-
-  const handleSignOut = async () => {
-    await signOut({ callbackUrl: '/' })
-  }
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <nav className="bg-white shadow">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-gray-900">
-                SuperMarket Receipt Manager
-              </h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-gray-700">Welcome, {session.user?.email}</span>
-              <button
-                onClick={handleSignOut}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-              >
-                Sign Out
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-gray-200 rounded-lg p-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                🧾 Welcome to Your Receipt Manager
-              </h2>
-              <p className="text-gray-600 mb-8">
-                Your secure dashboard for managing supermarket receipts and shopping data.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <div className="bg-white p-6 rounded-lg shadow">
-                  <div className="text-3xl mb-4">📱</div>
-                  <h3 className="text-lg font-semibold mb-2">Scan Receipts</h3>
-                  <p className="text-gray-600 text-sm">
-                    Upload and process your NFCe receipts from São Paulo supermarkets.
-                  </p>
-                  <button className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">
-                    Coming Soon
-                  </button>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow">
-                  <div className="text-3xl mb-4">📊</div>
-                  <h3 className="text-lg font-semibold mb-2">Analytics</h3>
-                  <p className="text-gray-600 text-sm">
-                    View your shopping patterns and expense analytics.
-                  </p>
-                  <button className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">
-                    Coming Soon
-                  </button>
-                </div>
-
-                <div className="bg-white p-6 rounded-lg shadow">
-                  <div className="text-3xl mb-4">🛒</div>
-                  <h3 className="text-lg font-semibold mb-2">Smart Lists</h3>
-                  <p className="text-gray-600 text-sm">
-                    Generate intelligent shopping lists based on your history.
-                  </p>
-                  <button className="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700">
-                    Coming Soon
-                  </button>
-                </div>
-              </div>
-
-              <div className="mt-8 p-4 bg-blue-50 rounded-lg">
-                <h4 className="font-semibold text-blue-900 mb-2">Authentication Status</h4>
-                <div className="text-sm text-blue-800">
-                  <p>✅ You are successfully authenticated!</p>
-                  <p>User ID: {session.user?.id}</p>
-                  <p>Email: {session.user?.email}</p>
-                  <p>Session expires: {new Date(session.expires).toLocaleDateString()}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
+    </AppLayout>
   )
 }
