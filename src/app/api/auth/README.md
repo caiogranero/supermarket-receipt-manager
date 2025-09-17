@@ -171,7 +171,7 @@ export default function Profile() {
 ### Protected API Route
 ```javascript
 import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth'
 
 export async function GET(request) {
   const session = await getServerSession(authOptions)

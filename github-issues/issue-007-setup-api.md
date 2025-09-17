@@ -1,6 +1,6 @@
 # Issue #7: Setup Next.js API Project Structure
 
-**Status:** OPEN
+**Status:** DONE
 **Created:** 2025-09-14T17:24:51Z
 **Updated:** 2025-09-14T17:24:51Z
 **Author:** caiogranero
