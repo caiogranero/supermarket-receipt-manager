@@ -32,17 +32,19 @@ export const useReceiptProcessing = () => {
 
     try {
       // Stage 1: Validating URL
-      setState(prev => ({ ...prev, progress: 20, stage: 'validating' }))
+      // setState(prev => ({ ...prev, progress: 20, stage: 'validating' }))
 
-      const validateResponse = await fetch('/api/nfce/validate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url })
-      })
+      // const validateResponse = await fetch('/api/nfce/validate', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ url })
+      // })
 
-      if (!validateResponse.ok) {
-        throw new Error('Invalid NFCe URL format')
-      }
+      // console.log(validateResponse);
+
+      // if (!validateResponse.ok) {
+      //   throw new Error('Invalid NFCe URL format')
+      // }
 
       // Stage 2: Scraping receipt data
       setState(prev => ({ ...prev, progress: 50, stage: 'scraping' }))

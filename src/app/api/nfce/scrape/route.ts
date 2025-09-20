@@ -6,7 +6,7 @@ import { isNFCeUrl } from '@/lib/nfce/url-parser'
 
 // Request validation schema
 const ScrapeRequestSchema = z.object({
-  url: z.string().url('Invalid URL format'),
+  url: z.string(),//.url('Invalid URL format'),
 })
 
 // Initialize scraper instance

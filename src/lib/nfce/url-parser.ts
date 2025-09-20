@@ -11,7 +11,7 @@ const NFCeParamsSchema = z.object({
   versao: z.string().regex(/^[0-9]$/, 'Version must be a single digit'),
   ambiente: z.string().regex(/^[12]$/, 'Environment must be 1 (production) or 2 (homolog)'),
   identificacao: z.string().regex(/^[0-9]$/, 'Identification must be a single digit'),
-  verificacao: z.string().length(32, 'Verification hash must be 32 characters'),
+  verificacao: z.string().length(40, 'Verification hash must be 32 characters'),
 })
 
 export interface NFCeUrlParams {
@@ -91,6 +91,7 @@ export function parseNFCeUrl(url: string): NFCeUrlParseResult {
     }
 
     // Validate parameters
+    console.log(params);
     const validation = NFCeParamsSchema.safeParse(params)
     if (!validation.success) {
       return {

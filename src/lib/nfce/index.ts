@@ -22,12 +22,31 @@ export {
   type NFCeScrapingResult,
 } from './http-scraper'
 
-// HTML Parser
+// DOM Parser
 export {
-  extractReceiptInfo,
-  isValidNFCeResponse,
-  extractErrorMessage,
-} from './html-parser'
+  NFCeDOMParser,
+} from './dom-parser'
+
+// Types
+export type {
+  NFCeEstablishment,
+  NFCeItem,
+  NFCePayment,
+  NFCeTotals,
+  NFCeTaxes,
+  NFCeConsumer,
+  NFCeMetadata,
+  NFCeParserOptions,
+  NFCeError,
+  NFCeErrorType,
+} from './types'
+
+// Selectors and utilities
+export {
+  NFCeSelectors,
+  NFCePatterns,
+  SelectorHelpers,
+} from './selectors'
 
 // Import for internal usage
 import { NFCeHttpScraper } from './http-scraper'
