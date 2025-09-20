@@ -31,7 +31,7 @@ Set up PostgreSQL database with Prisma ORM for data persistence in the SuperMark
 - **ORM**: Prisma latest stable version with TypeScript
 - **Migration Strategy**: Prisma migrate for schema management
 - **Connection Management**: Prisma connection pooling
-- **Environment Config**: DATABASE_URL in .env.local
+- **Environment Config**: POSTGRES_URL in .env.local
 
 ## Database Schema (Initial)
 ```prisma
@@ -50,7 +50,7 @@ model User {
 ## Configuration Files
 - `prisma/schema.prisma` with database schema
 - `lib/prisma.ts` for database client instance
-- DATABASE_URL in environment variables
+- POSTGRES_URL in environment variables
 
 ## Validation
 - [ ] Database created successfully in Vercel

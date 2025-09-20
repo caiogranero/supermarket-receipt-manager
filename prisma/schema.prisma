@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("POSTGRES_URL")
 }
 
 // User model for authentication
@@ -17,6 +17,84 @@ model User {
   password  String   // bcryptjs hashed password
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  receipts  Receipt[]
 
   @@map("users")
 }
+
+// Establishment model to store store information
+model Establishment {
+  id           String    @id @default(cuid())
+  name         String
+  cnpj         String    @unique
+  street       String
+  number       String
+  neighborhood String
+  city         String
+  state        String
+  receipts     Receipt[]
+
+  @@map("establishments")
+}
+
+// Receipt model as the central piece of information
+model Receipt {
+  id                String        @id @default(cuid())
+  nfceUrl           String
+  scrapedAt         DateTime
+  itemQuantity      Int
+  productsValue     Decimal
+  discountValue     Decimal
+  totalValue        Decimal
+  paidValue         Decimal
+  emissionDate      DateTime
+  accessKey         String        @unique
+  protocol          String
+  consumerDocument  String?
+  totalTaxesValue   Decimal?
+  
+  user              User          @relation(fields: [userId], references: [id])
+  userId            String
+  
+  establishment     Establishment @relation(fields: [establishmentId], references: [id])
+  establishmentId   String
+  
+  items             ReceiptItem[]
+  payments          Payment[]
+
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+
+  @@map("receipts")
+}
+
+// ReceiptItem model for items in a receipt
+model ReceiptItem {
+  id          String  @id @default(cuid())
+  itemNumber  Int
+  code        String
+  description String
+  unit        String
+  quantity    Float
+  unitPrice   Decimal
+  totalPrice  Decimal
+  
+  receipt     Receipt @relation(fields: [receiptId], references: [id])
+  receiptId   String
+
+  @@map("receipt_items")
+}
+
+// Payment model for payment methods used in a receipt
+model Payment {
+  id        String  @id @default(cuid())
+  method    String
+  amount    Decimal
+  type      String
+  
+  receipt   Receipt @relation(fields: [receiptId], references: [id])
+  receiptId String
+
+  @@map("payments")
+}
+

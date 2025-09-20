@@ -14,7 +14,7 @@ The SuperMarket Receipt Manager uses NextAuth.js v4 with JWT session strategy fo
 ```bash
 NEXTAUTH_SECRET=supersecretkey2024supermarketreceipts
 NEXTAUTH_URL=http://localhost:3001
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/supermarket_receipts?schema=public"
+POSTGRES_URL="postgresql://postgres:postgres@localhost:5432/supermarket_receipts?schema=public"
 ```
 
 ## API Endpoints

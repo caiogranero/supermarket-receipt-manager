@@ -42,7 +42,7 @@ model User {
 
 ```bash
 # Database connection string
-DATABASE_URL="postgresql://username:password@host:5432/database?sslmode=require"
+POSTGRES_URL="postgresql://username:password@host:5432/database?sslmode=require"
 ```
 
 ### Local Development
@@ -50,7 +50,7 @@ DATABASE_URL="postgresql://username:password@host:5432/database?sslmode=require"
 - For Vercel/Neon: Use the connection string from your database provider
 
 ### Production
-- Set `DATABASE_URL` in Vercel environment variables
+- Set `POSTGRES_URL` in Vercel environment variables
 - Enable connection pooling for production workloads
 
 ## Database Commands
@@ -82,7 +82,7 @@ npm run db:studio
    ```
 
 2. **Configure database connection**:
-   - Update `DATABASE_URL` in `.env.local`
+   - Update `POSTGRES_URL` in `.env.local`
    - Ensure PostgreSQL instance is accessible
 
 3. **Generate Prisma client**:
@@ -216,7 +216,7 @@ npm run db:reset
 ### Common Issues
 
 1. **Connection Failed**
-   - Verify `DATABASE_URL` format
+   - Verify `POSTGRES_URL` format
    - Check database server accessibility
    - Validate SSL/TLS requirements
 

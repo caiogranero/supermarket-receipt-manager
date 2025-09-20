@@ -1,31 +1,7 @@
 {
   "permissions": {
-    "allow": [
-      "mcp__sequential-thinking__sequentialthinking",
-      "mcp__github__create_issue",
-      "mcp__github__create_or_update_file",
-      "Bash(git init:*)",
-      "Bash(git remote add:*)",
-      "Bash(timeout:*)",
-      "mcp__github__list_issues",
-      "Bash(mkdir:*)",
-      "Bash(npx create-next-app:*)",
-      "Bash(npm install)",
-      "Bash(npm run build:*)",
-      "Bash(npm run dev:*)",
-      "Bash(curl:*)",
-      "Bash(npm run typecheck:*)",
-      "Bash(npm run lint)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(npm install:*)",
-      "Bash(npx prisma:*)",
-      "Bash(npm run:*)",
-      "Bash(docker:*)",
-      "Bash(DATABASE_URL=\"postgresql://postgres:postgres@localhost:5432/supermarket_receipts?schema=public\" npm run db:migrate)"
-    ],
-    "deny": [],
+    "allow": [],
+    "deny": ["mcp__github"],
     "ask": []
   }
 }

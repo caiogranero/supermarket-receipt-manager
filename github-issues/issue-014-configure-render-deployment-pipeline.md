@@ -54,7 +54,7 @@ Next.js App (Vercel)
 - **Build Command**: `npm run build` (automatic)
 - **Node Version**: 18+ LTS (automatic)
 - **Environment Variables**:
-  - `DATABASE_URL` (Vercel PostgreSQL connection)
+  - `POSTGRES_URL` (Vercel PostgreSQL connection)
   - `NEXTAUTH_SECRET` (securely generated)
   - `NEXTAUTH_URL` (production domain)
 
