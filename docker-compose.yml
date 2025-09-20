@@ -30,7 +30,7 @@ services:
     container_name: supermarket-receipt-pgadmin
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@supermarket.local
+      PGADMIN_DEFAULT_EMAIL: admin@supermarket.com
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_LISTEN_PORT: 80
     ports:
